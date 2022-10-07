@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+
+<form method="GET" action="">
+    <input name="q" placeholder="Search here"/>
+
+</form>
+
+
+{% include 'base/topic_com.html' %}
+
+<hr>
+<hr>
+<br>
+
+<div>
+<h1>Rooms</h1>
+<a href="{% url 'create-room' %}">Create Room</a>
+</div>
+
+
+<br>
+
+{% include 'base/feed_comp.html' %}
+
+<hr>
+
+
+
+
+
+<hr>
+
+<h1>Activity</h1>
+
+{% include 'base/activity_comp.html' %}
+
+
+{% endblock content %}
+
+

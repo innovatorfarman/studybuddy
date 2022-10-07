@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<main class="layout layout--3">
+  <div class="container">
+    <!-- Topics Start -->
+    {% include 'base/topic_comp.html' %}
+    <!-- Topics End -->
+
+    <!-- Room List Start -->
+    {% include 'base/feed_comp.html' %}
+    <!-- Room List End -->
+
+    <!-- Activities Start -->
+    {% include 'base/activity_comp.html' %}
+    <!-- Activities End -->
+  </div>
+</main>
+{% endblock content %}

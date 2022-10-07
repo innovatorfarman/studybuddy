@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+    <div class='room-container'>
+
+        <h3> {{room.name}}</h3>
+        <p> {{room.description}}</p>
+
+        <hr>
+        <hr>
+        <h1> Conversation</h1>
+        {% for message in room_messages %}
+            <span> @{{message.user}}</span> 
+            <span> {{message.created | timesince}} ago </span>
+            <p> {{message.body}} </p>
+            <span>{{message.room.topic.name}}</span>
+            <hr>
+        {% endfor %}
+
+        {% if request.user.is_authenticated %}
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="Write your message and press enter to submit">        
+        </form>
+        {% endif %}
+
+    </div>
+
+    <div>
+        <h1>Participants</h1>
+        <hr>
+        {% for p in participants %}
+            <p href="{% url 'user-profile' p.id %}">@{{p.username}}</p>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}
+

@@ -1,0 +1,14 @@
+
+{% for message in room_messages %}
+<div>
+    <hr>
+    <span href="{% url 'user-profile' message.user.id %}">@{{message.user.username}} </span>
+    <span>{{message.created | timesince}} ago </span>
+    <p>replied to:</p>
+    <p>{{message.room.name}}</p>
+    <span>{{message.body}}</span>
+    <span>{{message.room.topic.name}}</span>
+    <hr>
+    
+</div>
+{% endfor %}

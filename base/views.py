@@ -82,14 +82,17 @@ def room(request,pk):
     participants = room.participants.all()
 
     if request.method =="POST":
-        body = request.POST['body']
-        Message.objects.create(
-            user = request.user,
-            room = room,
-            body = body,
-        )
-        room.participants.add(request.user)
-        return redirect('room',pk=room.id)
+        if request.user.is_authenticated:
+            body = request.POST['body']
+            Message.objects.create(
+                user = request.user,
+                room = room,
+                body = body,
+            )
+            room.participants.add(request.user)
+            return redirect('room',pk=room.id)
+        else:
+            return redirect('login')
 
    
     data = {
